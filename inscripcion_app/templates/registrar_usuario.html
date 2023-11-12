@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Formulario de Registro de Usuario</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+
+<body class="p-4">
+
+  <div class="container">
+    <h2>Registro de Usuario</h2>
+    <form method="POST" class="needs-validation" novalidate>
+      {% csrf_token %}
+
+      <div class="form-group">
+        <label for="id_nombre">Nombre:</label>
+        <input type="text" class="form-control" id="id_nombre" name="nombre" required>
+        <div class="invalid-feedback">
+          Por favor, ingresa tu dirección
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="id_nombre">Direccion:</label>
+        <input type="text" class="form-control" id="id_nombre" name="nombre" required>
+        <div class="invalid-feedback">
+          Por favor, ingresa tu nombre.
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="id_contrasena">Contraseña:</label>
+        <input type="password" class="form-control" id="id_contrasena" name="contrasena" required>
+      </div>
+
+      <div class="form-group">
+        <label for="id_confirmar_contrasena">Confirmar Contraseña:</label>
+        <input type="password" class="form-control" id="id_confirmar_contrasena" name="confirmar_contrasena" required>
+      </div>
+
+      <div class="form-group">
+        <label for="id_fecha_nacimiento">Fecha de Nacimiento:</label>
+        <input type="date" class="form-control" id="id_fecha_nacimiento" name="fecha_nacimiento" required>
+      </div>
+
+      <div class="form-group">
+        <label>Sexo:</label><br>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" id="sexo_hombre" name="sexo" value="Hombre" required>
+          <label class="form-check-label" for="sexo_hombre">Hombre</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" id="sexo_mujer" name="sexo" value="Mujer" required>
+          <label class="form-check-label" for="sexo_mujer">Mujer</label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="intereses">Intereses:</label>
+        {% for interes in form.intereses %}
+        <div class="form-check">
+          {{ interes }}
+        </div>
+        {% endfor %}
+      </div>
+
+      <div class="form-group">
+        <label for="aficiones">Aficiones:</label>
+        {% for aficion in form.aficiones %}
+        <div class="form-check">
+          {{ aficion }}
+        </div>
+        {% endfor %}
+      </div>
+      <button type="submit" class="btn btn-primary">Registrarse</button>
+    </form>
+  </div>
+</body>
+
+</html>

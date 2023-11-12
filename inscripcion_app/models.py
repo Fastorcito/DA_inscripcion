@@ -5,6 +5,9 @@ class Aficion(models.Model):
     id_aficion = models.AutoField(primary_key=True)
     nom_afi = models.CharField(max_length=25)
 
+    def __str__(self):
+        return self.nom_afi
+
     class Meta:
         managed = False
         db_table = 'aficion'
@@ -127,6 +130,10 @@ class DjangoSession(models.Model):
 class Interes(models.Model):
     id_interes = models.AutoField(primary_key=True)
     nom_int = models.CharField(max_length=25)
+
+    def __str__ (self):
+        return self.nom_int
+        
 
     class Meta:
         managed = False

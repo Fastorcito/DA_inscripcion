@@ -16,8 +16,17 @@ def registrar_usuario(request):
             for interes in form.cleaned_data['intereses']:
                 UsuarioInteres.objects.create(id_usuario=usuario, id_interes=interes)
 
-            return redirect('confirmacion_inscripcion') 
+            return redirect('confirmacion_inscripcion')
     else:
         form = UsuarioForm()
 
     return render(request, 'registrar_usuario.html', {'form': form})
+
+def confirmar_registro(request):
+    if request.method == 'POST':
+        form = UsuarioForm(request.POST)
+        if form.is_valid():
+            datos_usuario = form.cleaned_data 
+            return render(request, 'confirmar_registro.html', {'datos_usuario': datos_usuario})
+    else:
+        return redirect('registrar_usuario')    
